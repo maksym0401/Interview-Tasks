@@ -2,7 +2,7 @@
 
 **Tasks**
 - task1/
-  - freqchar.py - calculate frequency of calculate the frequency and probabilities of occurrence of each character of English alphabet
+  - charfreq.py - calculate frequency of calculate the frequency and probabilities of occurrence of each character of English alphabet
 - task2/
   - user.py - repsresentation User class and additional descriptors and filters classes for attributes validation.-
 - task3/
