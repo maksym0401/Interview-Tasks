@@ -1,7 +1,7 @@
 from functools import lru_cache
+from pprint import pformat
 from string import ascii_lowercase
 from typing import Dict
-from pprint import pformat
 
 
 ENGLISH_ALPHABET = set(ascii_lowercase)

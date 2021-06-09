@@ -1,5 +1,5 @@
-from task2.user import NonNegativeFilter, RegexMatchFilter, User
 import pytest
+from task2.user import NonNegativeFilter, RegexMatchFilter, User
 
 
 def test_non_negative_filter():
@@ -18,7 +18,7 @@ def test_regex_match_filter():
     # Starts with
     filter_obj = RegexMatchFilter('^dog')
     with pytest.raises(ValueError):
-        filter_obj.filter('cat')
+        filter_obj.filter('cat and dog')
     filter_obj.filter('dog')
     filter_obj.filter('dog and cat')
 

@@ -28,7 +28,7 @@ class RegexMatchFilter(BaseFilter):
 
     def filter(self, value: str):
         if not self.pattern.match(value):
-            raise ValueError("Pattern doesn't match.")
+            raise ValueError(f"String '{value}' doesn't match pattern.")
 
 
 class Attribute:
@@ -43,14 +43,14 @@ class Attribute:
         else:
             self.set_filters = [set_filters]
 
-    def __set_name__(self, owner, name):
+    def __set_name__(self, owner, name: str):
         self.public = name
         self.private = f'_{name}'
 
-    def __get__(self, instance, owner=None):
+    def __get__(self, instance, owner=None) -> Any:
         return getattr(instance, self.private)
 
-    def __set__(self, instance, value):
+    def __set__(self, instance, value: Any):
         for filter in self.set_filters:
             filter(value)
 
@@ -81,13 +81,13 @@ class User:
         '''Do action, get experience'''
         if self.is_free_user():
             if self.is_actions_remaining():
-                self._actions_remaining -= 1
+                self.actions_remaining -= 1
             else:
                 return
         self.experience += 240  # give to user some expexperience
 
     def prolong_paid_subscription(self, days: int):
-        self._paid_days_remaining += days
+        self.paid_days_remaining += days
 
     def is_actions_remaining(self) -> bool:
         return self.actions_remaining != 0
